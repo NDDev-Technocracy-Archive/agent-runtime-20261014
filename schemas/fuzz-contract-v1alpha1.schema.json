@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/NDDev-OpenNetwork/agent-runtime/schemas/fuzz-contract-v1alpha1.schema.json",
+  "$id": "https://github.com/NDDev-Technocracy-Sandbox/agent-runtime/schemas/fuzz-contract-v1alpha1.schema.json",
   "x-license": "AGPL-3.0-only",
   "title": "agent-runtime fuzz contract v1alpha1",
   "type": "object",

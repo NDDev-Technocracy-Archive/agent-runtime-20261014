@@ -8,15 +8,15 @@
   "max_corpus_bytes_per_target": 1048576,
   "targets": [
     {
-      "package": "github.com/NDDev-OpenNetwork/agent-runtime",
+      "package": "github.com/NDDev-Technocracy-Sandbox/agent-runtime",
       "name": "FuzzDecodeTaskManifest"
     },
     {
-      "package": "github.com/NDDev-OpenNetwork/agent-runtime/observability",
+      "package": "github.com/NDDev-Technocracy-Sandbox/agent-runtime/observability",
       "name": "FuzzEnvelopeUnmarshal"
     },
     {
-      "package": "github.com/NDDev-OpenNetwork/agent-runtime/observability",
+      "package": "github.com/NDDev-Technocracy-Sandbox/agent-runtime/observability",
       "name": "FuzzRedactionNeverLeaksDeniedValue"
     }
   ]

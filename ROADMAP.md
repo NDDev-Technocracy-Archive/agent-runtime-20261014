@@ -8,7 +8,7 @@ accepted problem statement and security analysis is required before work begins.
 - Stable Task and Goal schema v1 after field experience and compatibility fixtures.
 - Network exporters and retention/rotation policy for structured lifecycle
   events, after the local redaction-aware sink contract has field experience
-  ([issue #3](https://github.com/NDDev-OpenNetwork/agent-runtime/issues/3)).
+  ([issue #3](https://github.com/NDDev-Technocracy-Sandbox/agent-runtime/issues/3)).
 - Explicit process-tree termination semantics per supported platform.
 - Optional adapters for established tool and model protocols.
 - Reference isolation profiles for containers and microVMs.

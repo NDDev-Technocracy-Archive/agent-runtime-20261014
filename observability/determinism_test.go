@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 // Every identifier the Task manifest contract accepts must be observable. The

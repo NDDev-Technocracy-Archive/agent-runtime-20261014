@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/NDDev-OpenNetwork/agent-runtime/internal/fuzzverify"
+	"github.com/NDDev-Technocracy-Sandbox/agent-runtime/internal/fuzzverify"
 )
 
 func main() {

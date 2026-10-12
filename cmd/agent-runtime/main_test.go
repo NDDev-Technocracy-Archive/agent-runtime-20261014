@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 func TestTaskCLIEndToEnd(t *testing.T) {

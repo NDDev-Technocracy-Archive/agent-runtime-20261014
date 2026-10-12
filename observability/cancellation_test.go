@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
 )
 
 func cancellationManifest(t *testing.T) (agentruntime.Workspace, agentruntime.TaskManifest) {

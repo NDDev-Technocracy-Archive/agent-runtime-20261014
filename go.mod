@@ -1,4 +1,4 @@
-module github.com/NDDev-OpenNetwork/agent-runtime
+module github.com/NDDev-Technocracy-Sandbox/agent-runtime
 
 go 1.26.0
 

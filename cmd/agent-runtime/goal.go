@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 const defaultJournalPath = ".agent-runtime/goal.json"
