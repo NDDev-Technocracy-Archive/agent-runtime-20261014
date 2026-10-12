@@ -130,17 +130,17 @@ type runnerFunc func(context.Context, invocation) error
 func (run runnerFunc) run(ctx context.Context, call invocation) error { return run(ctx, call) }
 
 func testContract() Contract {
-	return Contract{SchemaVersion: SchemaVersion, FuzzTime: "100x", FuzzMinimizeTime: "10x", Parallel: 1, Timeout: "2m", MaxCorpusFiles: 256, MaxCorpusBytes: 1 << 20, Targets: []Target{{Package: "github.com/NDDev-OpenNetwork/agent-runtime", Name: "FuzzAlpha"}, {Package: "github.com/NDDev-OpenNetwork/agent-runtime/sub", Name: "FuzzBeta"}}}
+	return Contract{SchemaVersion: SchemaVersion, FuzzTime: "100x", FuzzMinimizeTime: "10x", Parallel: 1, Timeout: "2m", MaxCorpusFiles: 256, MaxCorpusBytes: 1 << 20, Targets: []Target{{Package: "github.com/NDDev-Technocracy-Sandbox/agent-runtime", Name: "FuzzAlpha"}, {Package: "github.com/NDDev-Technocracy-Sandbox/agent-runtime/sub", Name: "FuzzBeta"}}}
 }
 
 func testModule(t *testing.T, targets []Target) string {
 	t.Helper()
 	root := t.TempDir()
-	if err := os.WriteFile(filepath.Join(root, "go.mod"), []byte("module github.com/NDDev-OpenNetwork/agent-runtime\n\ngo 1.25.0\n"), 0o600); err != nil {
+	if err := os.WriteFile(filepath.Join(root, "go.mod"), []byte("module github.com/NDDev-Technocracy-Sandbox/agent-runtime\n\ngo 1.25.0\n"), 0o600); err != nil {
 		t.Fatal(err)
 	}
 	for _, target := range targets {
-		relative := strings.TrimPrefix(target.Package, "github.com/NDDev-OpenNetwork/agent-runtime")
+		relative := strings.TrimPrefix(target.Package, "github.com/NDDev-Technocracy-Sandbox/agent-runtime")
 		directory := filepath.Join(root, filepath.FromSlash(strings.TrimPrefix(relative, "/")))
 		if err := os.MkdirAll(directory, 0o700); err != nil {
 			t.Fatal(err)

@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
 )
 
 var fixedTime = time.Date(2026, 8, 13, 12, 0, 0, 0, time.UTC)

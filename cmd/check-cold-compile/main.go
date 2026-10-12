@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/NDDev-OpenNetwork/agent-runtime/internal/compilematrix"
+	"github.com/NDDev-Technocracy-Sandbox/agent-runtime/internal/compilematrix"
 )
 
 func main() {

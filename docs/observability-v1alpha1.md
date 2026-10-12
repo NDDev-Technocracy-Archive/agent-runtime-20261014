@@ -1,6 +1,6 @@
 # Observability contract v1alpha1
 
-This contract implements [issue #3](https://github.com/NDDev-OpenNetwork/agent-runtime/issues/3).
+This contract implements [issue #3](https://github.com/NDDev-Technocracy-Sandbox/agent-runtime/issues/3).
 It is provider-neutral and deliberately separate from authoritative Task results
 and Goal journals.
 

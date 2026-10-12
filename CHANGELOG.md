@@ -53,7 +53,7 @@ contract.
 ## [0.1.1] - 2026-08-16
 
 First release of `agent-runtime` as an open-source module under
-`github.com/NDDev-OpenNetwork/agent-runtime`. The version line starts here: this
+`github.com/NDDev-Technocracy-Sandbox/agent-runtime`. The version line starts here: this
 is a new module path, so the numbering of the predecessor it grew out of does
 not carry over and would only mislead anyone resolving it.
 

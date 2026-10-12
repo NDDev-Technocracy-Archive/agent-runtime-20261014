@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/NDDev-OpenNetwork/agent-runtime/schemas/lifecycle-event-v1alpha1.schema.json",
+  "$id": "https://github.com/NDDev-Technocracy-Sandbox/agent-runtime/schemas/lifecycle-event-v1alpha1.schema.json",
   "title": "agent-runtime lifecycle event v1alpha1",
   "x-license": "AGPL-3.0-only",
   "type": "object",

@@ -23,7 +23,7 @@ protocol, scheduler, or operating-system sandbox.
 Requires Go 1.26 or newer.
 
 ```sh
-go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.1.8
+go install github.com/NDDev-Technocracy-Sandbox/agent-runtime/cmd/agent-runtime@v0.1.8
 agent-runtime task validate --manifest examples/basic/agent.json --workspace examples/basic
 agent-runtime task run --manifest examples/basic/agent.json --workspace examples/basic
 ```

@@ -7,7 +7,7 @@ Until 1.0, only the latest tagged release receives security fixes.
 ## Reporting a vulnerability
 
 Do not open a public issue. Use the repository's
-[private security advisory form](https://github.com/NDDev-OpenNetwork/agent-runtime/security/advisories/new).
+[private security advisory form](https://github.com/NDDev-Technocracy-Sandbox/agent-runtime/security/advisories/new).
 Include the affected version, operating system, reproduction, impact, and any
 suggested mitigation. Maintainers aim to acknowledge complete reports within
 five business days. Disclosure timing is coordinated after a fix is available.

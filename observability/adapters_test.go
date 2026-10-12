@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 type failedSink struct{}

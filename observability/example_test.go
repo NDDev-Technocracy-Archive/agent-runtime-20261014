@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/NDDev-OpenNetwork/agent-runtime/observability"
+	"github.com/NDDev-Technocracy-Sandbox/agent-runtime/observability"
 )
 
 func ExampleEmitter() {

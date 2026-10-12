@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"runtime/debug"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 var version = "dev"

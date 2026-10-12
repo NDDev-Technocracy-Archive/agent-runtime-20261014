@@ -1,6 +1,6 @@
 # Agent instructions
 
-The organization-wide contract in `NDDev-OpenNetwork/.github` applies. This file
+The organization-wide contract in `NDDev-Technocracy-Sandbox/.github` applies. This file
 adds only what is specific to this repository.
 
 ## What this module is

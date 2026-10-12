@@ -7,8 +7,8 @@ import (
 	"errors"
 	"time"
 
-	agentruntime "github.com/NDDev-OpenNetwork/agent-runtime"
-	goalpkg "github.com/NDDev-OpenNetwork/agent-runtime/goal"
+	agentruntime "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
+	goalpkg "github.com/NDDev-Technocracy-Sandbox/agent-runtime/goal"
 )
 
 // terminalDeliveryTimeout bounds delivery of a terminal Task observation on a

@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/NDDev-OpenNetwork/agent-runtime/internal/staticcheckcompat"
+	"github.com/NDDev-Technocracy-Sandbox/agent-runtime/internal/staticcheckcompat"
 )
 
 func main() {

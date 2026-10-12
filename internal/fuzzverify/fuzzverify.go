@@ -30,7 +30,7 @@ const SchemaVersion = "v1alpha1"
 
 var targetName = regexp.MustCompile(`^Fuzz[A-Z][A-Za-z0-9_]*$`)
 
-const modulePath = "github.com/NDDev-OpenNetwork/agent-runtime"
+const modulePath = "github.com/NDDev-Technocracy-Sandbox/agent-runtime"
 
 type Contract struct {
 	SchemaVersion    string   `json:"schema_version"`
