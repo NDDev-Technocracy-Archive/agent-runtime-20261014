@@ -23,7 +23,7 @@
         "additionalProperties": false,
         "required": ["package", "name"],
         "properties": {
-          "package": {"type": "string", "pattern": "^github\\.com/NDDev-OpenNetwork/agent-runtime(?:/[A-Za-z0-9_.-]+)*$"},
+          "package": {"type": "string", "pattern": "^github\\.com/NDDev-Technocracy-Sandbox/agent-runtime(?:/[A-Za-z0-9_.-]+)*$"},
           "name": {"type": "string", "pattern": "^Fuzz[A-Z][A-Za-z0-9_]*$"}
         }
       }
