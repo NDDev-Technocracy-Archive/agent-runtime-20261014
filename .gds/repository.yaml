@@ -2,23 +2,24 @@ schema_version: 1
 
 repository:
   id: "repo_01M0EZ7TQ2V3D1DBBFM0RM0E13"
-  display_name: "agent-runtime"
+  display_name: agent-runtime-20261014
   roles: ["project", "module"]
-  lifecycle: "active"
-
+  lifecycle: archived
 provider:
   type: "github"
-  installation: "installation:github-nddev-technocracy-opennetwork"
+  installation: "installation:github-nddev-technocracy-archive"
   repository_id: 1335304680
-  owner: "NDDev-Technocracy-OpenNetwork"
-  name: "agent-runtime"
+  owner: NDDev-Technocracy-Archive
+  name: agent-runtime-20261014
 
   aliases:
+    - owner: NDDev-Technocracy-OpenNetwork
+      name: agent-runtime
     - owner: "NDDev-Technocracy-Sandbox"
       name: "agent-runtime"
 
 classification:
-  portfolios: ["portfolio:nddev-technocracy-opennetwork"]
+  portfolios: ["portfolio:nddev-technocracy-archive"]
   visibility_contract: "public"
   data_classification: "public"
 
