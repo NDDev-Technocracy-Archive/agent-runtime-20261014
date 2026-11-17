@@ -11,6 +11,15 @@ package that derives lifecycle events from them. It is deliberately not a model
 provider, tool protocol, scheduler, or sandbox. A change that adds one of those
 belongs in a different repository.
 
+## Source CI
+
+Just owns the executable command contract. `just check` runs build-free Go/command
+formatting and workflow audits. Shared CI keeps the existing Linux amd64/arm64 and
+macOS ARM64 native lanes, including every fuzz/cold-compile target, plus the
+vulnerability and both CodeQL language gates. Main full verification retains the
+history scan. The release workflow and its existing state are unchanged; source CI
+maintenance does not publish a tag, install a runtime or operate a model/provider.
+
 ## Checks
 
 ```
