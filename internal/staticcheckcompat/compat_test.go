@@ -34,13 +34,13 @@ func TestVerifyPinsFailsClosedOnMissingOrDriftedPin(t *testing.T) {
 		t.Fatal(err)
 	}
 	if err := VerifyPins(root); err == nil {
-		t.Fatal("missing workflow pin accepted")
+		t.Fatal("missing command pin accepted")
 	}
-	writeContract(t, root, ".github/workflows/ci.yml", "go run honnef.co/go/tools/cmd/staticcheck@v0.7.0 ./...\n")
+	writeContract(t, root, "justfile", "go run honnef.co/go/tools/cmd/staticcheck@v0.7.0 ./...\n")
 	if err := VerifyPins(root); err == nil {
-		t.Fatal("drifted workflow pin accepted")
+		t.Fatal("drifted command pin accepted")
 	}
-	writeContract(t, root, ".github/workflows/ci.yml", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
+	writeContract(t, root, "justfile", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
 	if err := VerifyPins(root); err != nil {
 		t.Fatal(err)
 	}
@@ -105,7 +105,7 @@ func contractRoot(t *testing.T) string {
 	root := t.TempDir()
 	writeContract(t, root, "AGENTS.md", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
 	writeContract(t, root, "CONTRIBUTING.md", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
-	writeContract(t, root, ".github/workflows/ci.yml", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
+	writeContract(t, root, "justfile", "go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...\n")
 	return root
 }
 
@@ -118,5 +118,3 @@ func count(values []string, want string) int {
 	}
 	return found
 }
-
-

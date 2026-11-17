@@ -1,127 +1,52 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-
 name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, labeled, edited]
 
-# Actions are pinned to a commit, not a tag, so a moved tag cannot change what
-# runs here.
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-env:
-  GOTOOLCHAIN: local
-
 jobs:
-  test:
-    name: Test
+  check:
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/check.yml@b5284b8a63b81c3bfec197d18ff8725616b12a25 # v0.6.65
+    permissions:
+      contents: read
+    with:
+      hosted-runner: ubuntu-24.04
+      fetch-depth: 0
+      setup: true
+      go-version: '1.27.1'
+      tools: zizmor@1.32.0
+      tool-assets: .github/source-tools.json
+  native:
     strategy:
       fail-fast: false
       matrix:
-        # docs/releasing.md builds linux/amd64, linux/arm64, darwin/amd64 and
-        # darwin/arm64. macos-26 is Apple Silicon, so these three cover every
-        # shipped combination except darwin/amd64, which needs macos-13 — the last
-        # Intel image, already announced for retirement.
-        #
-        # ubuntu-24.04-arm is a standard hosted runner and unmetered on public
-        # repositories, so linux/arm64 costs nothing to exercise natively rather
-        # than only cross-compiling it at release time.
-        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-26]
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version: '1.27.1'
-          cache: false
-
-      - run: go test -race ./...
-      - run: go vet ./...
-
-      - name: Staticcheck pin and toolchain compatibility
-        run: go run ./cmd/check-staticcheck
-
-      - name: Static analysis
-        run: |
-          set -euo pipefail
-          go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...
-
-      - run: go build ./cmd/agent-runtime
-
-      # Every fuzz target in the contract is started for a bounded number of
-      # iterations. A target that stops existing, or a new one that is never
-      # registered, fails here rather than going unnoticed.
-      - name: Fuzz targets
-        run: go run ./cmd/check-fuzz
-
-      # The module claims to build for platforms this matrix does not run on;
-      # cold-compiling each one is the only thing that makes the claim true.
-      - name: Cold-compile every supported platform
-        run: go run ./cmd/check-cold-compile
-
+        os: [ubuntu-24.04-arm, macos-26]
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/recipe.yml@b5284b8a63b81c3bfec197d18ff8725616b12a25 # v0.6.65
+    permissions:
+      contents: read
+    with:
+      hosted-runner: ${{ matrix.os }}
+      prepare: setup
+      recipe: test
+      go-version: '1.27.1'
+      timeout-minutes: 30
   vulnerabilities:
-    name: Vulnerabilities
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version: '1.27.1'
-          cache: false
-      - run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
-
-  gate:
-    name: Gate
-    if: always()
-    needs: [test, vulnerabilities]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - name: Require every CI lane
-        env:
-          TEST: ${{ needs.test.result }}
-          VULNERABILITIES: ${{ needs.vulnerabilities.result }}
-        run: |
-          set -euo pipefail
-          test "${TEST}" = success
-          test "${VULNERABILITIES}" = success
-
-  workflows:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-      - uses: NDDev-Technocracy-Standarts/std-0004-ci-cd-workflows/.github/actions/tools@c192c6adcf22088abf456635de614d42e8fa3f8d # nddev-cicd-v0.6.20
-        with:
-          capability: security
-      - name: Lint and audit workflows
-        run: |
-          actionlint
-          zizmor --offline --no-progress .github/workflows/ci.yml .github/workflows/security.yml .github/dependabot.yml
-      - name: Scan new pull request commits, or the full history on main
-        env:
-          BASE: ${{ github.event.pull_request.base.sha }}
-          HEAD: ${{ github.event.pull_request.head.sha }}
-        run: |
-          if [ -n "$BASE" ]; then
-            gitleaks git --no-banner --redact --log-opts="$BASE..$HEAD" .
-          else
-            gitleaks git --no-banner --redact .
-          fi
-
+    if: github.event_name == 'pull_request'
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/recipe.yml@b5284b8a63b81c3bfec197d18ff8725616b12a25 # v0.6.65
+    permissions:
+      contents: read
+    with:
+      hosted-runner: ubuntu-24.04
+      prepare: setup
+      recipe: vulnerability-check
+      go-version: '1.27.1'
+      timeout-minutes: 30

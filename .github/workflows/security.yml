@@ -5,9 +5,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: security-${{ github.event.pull_request.number || github.ref }}
@@ -16,6 +17,7 @@ concurrency:
 
 jobs:
   codeql:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
@@ -36,3 +38,10 @@ jobs:
       - uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           category: /language:${{ matrix.language }}
+
+  daily:
+    if: github.event_name == 'schedule'
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/security.yml@b5284b8a63b81c3bfec197d18ff8725616b12a25 # v0.6.65
+    permissions:
+      contents: read
+      issues: write

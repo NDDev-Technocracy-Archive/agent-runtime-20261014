@@ -21,7 +21,7 @@ const Module = "honnef.co/go/tools/cmd/staticcheck"
 var ContractFiles = []string{
 	"AGENTS.md",
 	"CONTRIBUTING.md",
-	".github/workflows/ci.yml",
+	"justfile",
 }
 
 type invocation struct {
